@@ -11,7 +11,7 @@ interface NavProps {
 	session: Session
 }
 
-export default function Nav({ user, expires }: Session) {
+export default function Nav({ user }: Session) {
 	const cartStore = useCart()
 	return (
 		<nav className="flex justify-between items-center py-8">
