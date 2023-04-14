@@ -45,10 +45,10 @@ export default function Nav({ user, expires }: Session) {
 								className="rounded-full"
 							/>
 						</li>
-						{cartStore.isOpen && <Cart />}
 					</>
 				)}
 			</ul>
+				{cartStore.isOpen && <Cart />}
 		</nav>
 	)
 }
