@@ -1,20 +1,13 @@
-interface ProductDetailProps {
-	params: {
-		productId: string
-	}
-}
+"use client"
 
-async function getProduct(productId: string) {
-	// Fetch product from Stripe API
-  
-}
+import {useCart} from "@/store/cart"
 
-export default async function ProductDetails({ params }: ProductDetailProps) {
-  const { productId } = params
-  const product = await getProduct(productId)
-	return (
-		<div>
-			<h1>{product.name}</h1>
-		</div>
-	)
+export default function ProductPage(props) {
+
+
+    return (
+        <div className="flex flex-col p-4">
+
+        </div>
+    )
 }

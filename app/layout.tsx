@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import Nav from '@/app/components/Nav'
+import Nav from '@/components/Nav'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 

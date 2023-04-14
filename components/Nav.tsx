@@ -3,12 +3,16 @@
 import { Session } from 'next-auth'
 import { signIn, signOut } from 'next-auth/react'
 import Image from 'next/image'
+import Cart from './Cart'
+import { useCart } from '@/store/cart'
+import { LucideProps, ShoppingBag } from 'lucide-react'
 
 interface NavProps {
 	session: Session
 }
 
 export default function Nav({ user, expires }: Session) {
+	const cartStore = useCart()
 	return (
 		<nav className="flex justify-between items-center py-8">
 			<h1 className="font-extrabold  text-4xl">
@@ -17,7 +21,7 @@ export default function Nav({ user, expires }: Session) {
 					Mania!
 				</span>
 			</h1>
-			<ul>
+			<ul className="flex items-center gap-10">
 				{!user ? (
 					<button
 						className="px-6 py-2 text-purple-100 rounded bg-gradient-to-r bg-purple-500"
@@ -27,16 +31,21 @@ export default function Nav({ user, expires }: Session) {
 					</button>
 				) : (
 					<>
+						<li onClick={() => cartStore.toggleCart()} className="text-white relative cursor-pointer">
+							<ShoppingBag />
+							<span className="absolute -top-2 -right-2 bg-purple-400 rounded-full w-5 h-5 flex items-center justify-center text-white text-xs">{cartStore.cart.length}</span>						
+						</li>
 						<li>
 							<Image
-								width={48}
-								height={48}
+								width={36}
+								height={36}
 								src={user.image as string}
 								alt="Profile picture"
 								referrerPolicy="no-referrer"
 								className="rounded-full"
 							/>
 						</li>
+						{cartStore.isOpen && <Cart />}
 					</>
 				)}
 			</ul>
